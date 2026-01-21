@@ -1,0 +1,92 @@
+/* ข้อ 1: id=organization - พื้นหลัง bisque, text center, ตัวอักษรเขียว */
+#organization {
+    background-color: bisque;
+    text-align: center;
+    color: green;
+}
+
+/* ข้อ 2: class year-range - ขอบซ้าย 6px สีแดง solid */
+.year-range {
+    border-left-width: 6px;
+    border-left-color: red;
+    border-left-style: solid;
+}
+
+/* ข้อ 3: ตัวอักษรตัวแรกใน p มีขนาด 35px และสีน้ำเงิน */
+p::first-letter {
+    font-size: 35px;
+    color: blue;
+}
+
+/* ข้อ 4: เมื่อ hover บน p ให้ปรับตัวอักษรเป็น 26px และสีแดง */
+p:hover {
+    font-size: 26px;
+    color: red;
+}
+
+/* ข้อ 5: class heading ตัวอักษรสี #0D3D56 และ overrule styling อื่น */
+.heading {
+    color: #0D3D56 !important;
+}
+
+/* ข้อ 6: link ที่ยังไม่เคยถูกเยี่ยม - สีม่วง, เส้นใต้แบบจุด, เส้นใต้สีแดง */
+a:link {
+    color: blueviolet;
+    text-decoration-style: dotted;
+    text-decoration-color: red;
+}
+
+/* ข้อ 7: link ที่ถูก visited แล้ว - สีเทา, เส้นใต้แบบจุด, เส้นใต้สีน้ำเงิน */
+a:visited {
+    color: gray;
+    text-decoration-style: dotted;
+    text-decoration-color: blue;
+}
+
+/* ข้อ 8: link ภายใต้ li มีพื้นหลังสีฟ้า aquamarine */
+li a {
+    background-color: aquamarine;
+}
+
+/* ข้อ 9: ทุก p มี indent 40px */
+p {
+    text-indent: 40px;
+}
+
+/* ============================================== */
+/* ส่วนที่ 4: ปรับปรุง CSS เพิ่มเติม (Optional)   */
+/* ============================================== */
+
+/*
+ข้อด้อยที่ 1: ไม่มี spacing/margin ที่เหมาะสม
+- เนื้อหาติดขอบหน้าจอ ไม่มี padding รอบๆ
+- ระยะห่างระหว่าง elements ไม่สม่ำเสมอ
+
+การปรับปรุง: เพิ่ม padding ให้ body และ margin ให้ elements ต่างๆ
+*/
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    line-height: 1.8;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+/*
+ข้อด้อยที่ 2: Font ไม่สวยงามและขาด visual hierarchy
+- ใช้ font เริ่มต้นของ browser ซึ่งดูไม่ professional
+- ขนาดตัวอักษรเล็กเกินไป
+
+การปรับปรุง: กำหนด font-family และขนาดตัวอักษรที่เหมาะสม
+*/
+body {
+    font-family: 'Sarabun', 'TH Sarabun New', 'Segoe UI', sans-serif;
+    font-size: 18px;
+}
