@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex Layout 1</title>
+    <style>
+        /* container แต่ละแถว */
+        .upper-item, .lower-item, .item{
+            border: 2px solid black;
+            background-color: lightblue;
+            text-align: center;
+            font-size: 24px;
+            padding: 20px;
+            
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upper-row {
+            display: flex;
+        }
+
+        .upper-item:nth-child(1) {flex-grow: 1;}
+        .upper-item:nth-child(2) {flex-grow: 3;}
+        .upper-item:nth-child(3) {flex-grow: 3;}
+
+        .lower-row {
+            display: flex;
+        }
+
+        .lower-item { flex-grow: 1;}
+
+        .item:nth-child(2) { flex-grow: 2;}
+        .item:nth-child(3) { flex-grow: 1;}
+        .item:nth-child(4) { flex-grow: 2;}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- แถวบน -->
+        <div class="upper-row">
+            <div class="upper-item">1</div>
+            <div class="upper-item">2</div>
+            <div class="upper-item">3</div>
+        </div>
+
+        <!-- แถวล่าง -->
+        <div class="lower-row">
+            <div class="lower-item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+        </div>
+    </div>
+</body>
+</html>

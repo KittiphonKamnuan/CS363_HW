@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flex Layout 2</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* container หลัก */
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+/* แต่ละคอลัมน์ */
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+}
+
+/* กล่อง */
+.box {
+    border: 2px solid black;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: purple;
+}
+
+/* ขนาด */
+.small {
+    height: 100px; /* 1,2,3,5,6 */
+}
+.medium {
+    height: 115px; /* 1,2,3,5,6 */
+}
+
+.large {
+    height: 220px; /* 4 ใหญ่สุด */
+}
+
+/* ช่องว่าง */
+.space {
+    height: 110px;
+}
+
+.float-up {
+    margin-top: -50px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- คอลัมน์ซ้าย -->
+    <div class="column">
+        <div class="space"></div>
+        <div class="box small">1</div>
+        <div class="box medium">2</div>
+    </div>
+
+    <!-- คอลัมน์กลาง -->
+    <div class="column">
+        <div class="box medium">3</div>
+        <div class="box large">4</div>
+    </div>
+
+    <!-- คอลัมน์ขวา -->
+    <div class="column">
+        <div class="space"></div>
+        <div class="box small float-up">5</div>
+        <div class="box small">6</div>
+    </div>
+
+</div>
+
+</body>
+</html>
