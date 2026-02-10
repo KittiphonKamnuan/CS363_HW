@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Department - Laptop & IT Gadget Rental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .item-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .item:hover {
+            transform: scale(1.05);
+        }
+        .item img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .item h3 {
+            margin: 10px 0;
+        }
+        .item p {
+            color: #555;
+        }
+        .item .stock {
+            color: green;
+            font-weight: bold;
+        }
+        .item button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .item button:disabled {
+            background: grey;
+            cursor: not-allowed;
+        }
+        .item button:hover:enabled {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Laptop & IT Gadget Rental - CS Department</h1>
+
+    <!-- Laptops Group -->
+    <div class="category">
+        <h2>Laptops</h2>
+        <div class="item-list">
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Laptop">
+                <h3>MacBook Pro</h3>
+                <p>Powerful laptop for software development and design.</p>
+                <p class="stock">Stock: <span class="stock-count">3</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Laptop">
+                <h3>Lenovo ThinkPad</h3>
+                <p>Reliable laptop with great keyboard and battery life.</p>
+                <p class="stock">Stock: <span class="stock-count">2</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tablets & Accessories Group -->
+    <div class="category">
+        <h2>Tablets & Accessories</h2>
+        <div class="item-list">
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Tablet">
+                <h3>iPad Pro</h3>
+                <p>Perfect for note-taking and digital sketching.</p>
+                <p class="stock">Stock: <span class="stock-count">4</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Accessory">
+                <h3>External Hard Drive</h3>
+                <p>1TB of storage for backups and file transfers.</p>
+                <p class="stock">Stock: <span class="stock-count">5</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Accessory">
+                <h3>USB-C Hub</h3>
+                <p>Expand connectivity for modern laptops.</p>
+                <p class="stock">Stock: <span class="stock-count">7</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Accessory">
+                <h3>Wireless Mouse</h3>
+                <p>Ergonomic design for comfortable use.</p>
+                <p class="stock">Stock: <span class="stock-count">6</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Accessory">
+                <h3>Mechanical Keyboard</h3>
+                <p>Tactile feedback for efficient typing.</p>
+                <p class="stock">Stock: <span class="stock-count">4</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio & Video Equipment Group -->
+    <div class="category">
+        <h2>Audio & Video Equipment</h2>
+        <div class="item-list">
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Gadget">
+                <h3>Webcam HD</h3>
+                <p>High-definition camera for online meetings.</p>
+                <p class="stock">Stock: <span class="stock-count">3</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Gadget">
+                <h3>Portable Projector</h3>
+                <p>Compact projector for presentations.</p>
+                <p class="stock">Stock: <span class="stock-count">2</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200" alt="Accessory">
+                <h3>Noise Cancelling Headphones</h3>
+                <p>Immersive audio experience for focus.</p>
+                <p class="stock">Stock: <span class="stock-count">3</span></p>
+                <button onclick="rent(this)">Rent Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Task 1.1: Apply ivory background to all items
+        const items = document.getElementsByClassName('item');
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.backgroundColor = 'ivory';
+        }
+
+        // Task 1.2: Change h3 text color to navy blue
+        const h3Elements = document.getElementsByTagName('h3');
+        for (let i = 0; i < h3Elements.length; i++) {
+            h3Elements[i].style.color = 'navy';
+        }
+
+        // Task 1.3: Rent/Return functionality
+
+        // Store initial stock values on page load
+        const stockSpans = document.getElementsByClassName('stock-count');
+        for (let i = 0; i < stockSpans.length; i++) {
+            const initialStock = stockSpans[i].textContent;
+            stockSpans[i].setAttribute('data-max-stock', initialStock);
+        }
+
+        // Add Return buttons next to each Rent button
+        const rentButtons = document.querySelectorAll('.item button');
+        rentButtons.forEach(button => {
+            const returnButton = document.createElement('button');
+            returnButton.textContent = 'Return';
+            returnButton.style.backgroundColor = 'green';
+            returnButton.style.marginLeft = '10px';
+            returnButton.onclick = function() { returnItem(this); };
+            returnButton.disabled = true; // Initially disabled
+            button.parentNode.insertBefore(returnButton, button.nextSibling);
+        });
+
+        // Rent: decrease stock by 1; disable Rent button when stock is 0 (Task 3)
+        function rent(button) {
+            const item = button.closest('.item');
+            const stockSpan = item.querySelector('.stock-count');
+            let currentStock = parseInt(stockSpan.textContent);
+
+            if (currentStock > 0) {
+                currentStock--;
+                stockSpan.textContent = currentStock;
+
+                // Disable Rent button if stock reaches 0
+                if (currentStock === 0) {
+                    button.disabled = true;
+                }
+
+                // Enable Return button
+                const returnButton = button.nextElementSibling;
+                if (returnButton) {
+                    returnButton.disabled = false;
+                }
+            }
+        }
+
+        // Return item function
+        function returnItem(button) {
+            const item = button.closest('.item');
+            const stockSpan = item.querySelector('.stock-count');
+            let currentStock = parseInt(stockSpan.textContent);
+            const maxStock = parseInt(stockSpan.getAttribute('data-max-stock'));
+
+            if (currentStock < maxStock) {
+                currentStock++;
+                stockSpan.textContent = currentStock;
+
+                // Enable Rent button
+                const rentButton = button.previousElementSibling;
+                if (rentButton) {
+                    rentButton.disabled = false;
+                }
+
+                // Disable Return button if stock reaches max
+                if (currentStock === maxStock) {
+                    button.disabled = true;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
