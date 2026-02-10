@@ -66,13 +66,41 @@
         .item button:hover:enabled {
             background: #0056b3;
         }
+
+        .view-toggle{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 999;
+        }
+        .view-toggle button{
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .view-toggle button.active{
+            background: #007bff;
+        }
+
+        body.vertical .item-list{
+            grid-template-columns: 1fr;
+        }
     </style>
 </head>
 <body>
 
+    <div class="view-toggle">
+        <button id="btnHorizon" class="active">Horizon</button>
+        <button id="btnVertical">Vertical</button>
+    </div>
+
     <h1>Laptop & IT Gadget Rental - CS Department</h1>
 
-    <!-- Laptops Group -->
     <div class="category">
         <h2>Laptops</h2>
         <div class="item-list">
@@ -93,7 +121,6 @@
         </div>
     </div>
 
-    <!-- Tablets & Accessories Group -->
     <div class="category">
         <h2>Tablets & Accessories</h2>
         <div class="item-list">
@@ -135,7 +162,7 @@
         </div>
     </div>
 
-    <!-- Audio & Video Equipment Group -->
+
     <div class="category">
         <h2>Audio & Video Equipment</h2>
         <div class="item-list">
@@ -164,28 +191,23 @@
     </div>
 
     <script>
-        // Task 1.1: Apply ivory background to all items
+
         const items = document.getElementsByClassName('item');
         for (let i = 0; i < items.length; i++) {
             items[i].style.backgroundColor = 'ivory';
         }
 
-        // Task 1.2: Change h3 text color to navy blue
         const h3Elements = document.getElementsByTagName('h3');
         for (let i = 0; i < h3Elements.length; i++) {
             h3Elements[i].style.color = 'navy';
         }
 
-        // Task 1.3: Rent/Return functionality
-
-        // Store initial stock values on page load
         const stockSpans = document.getElementsByClassName('stock-count');
         for (let i = 0; i < stockSpans.length; i++) {
             const initialStock = stockSpans[i].textContent;
             stockSpans[i].setAttribute('data-max-stock', initialStock);
         }
 
-        // Add Return buttons next to each Rent button
         const rentButtons = document.querySelectorAll('.item button');
         rentButtons.forEach(button => {
             const returnButton = document.createElement('button');
@@ -193,11 +215,10 @@
             returnButton.style.backgroundColor = 'green';
             returnButton.style.marginLeft = '10px';
             returnButton.onclick = function() { returnItem(this); };
-            returnButton.disabled = true; // Initially disabled
+            returnButton.disabled = true; 
             button.parentNode.insertBefore(returnButton, button.nextSibling);
         });
 
-        // Rent: decrease stock by 1; disable Rent button when stock is 0 (Task 3)
         function rent(button) {
             const item = button.closest('.item');
             const stockSpan = item.querySelector('.stock-count');
@@ -207,12 +228,10 @@
                 currentStock--;
                 stockSpan.textContent = currentStock;
 
-                // Disable Rent button if stock reaches 0
                 if (currentStock === 0) {
                     button.disabled = true;
                 }
 
-                // Enable Return button
                 const returnButton = button.nextElementSibling;
                 if (returnButton) {
                     returnButton.disabled = false;
@@ -220,7 +239,6 @@
             }
         }
 
-        // Return item function
         function returnItem(button) {
             const item = button.closest('.item');
             const stockSpan = item.querySelector('.stock-count');
@@ -231,18 +249,31 @@
                 currentStock++;
                 stockSpan.textContent = currentStock;
 
-                // Enable Rent button
                 const rentButton = button.previousElementSibling;
                 if (rentButton) {
                     rentButton.disabled = false;
                 }
 
-                // Disable Return button if stock reaches max
                 if (currentStock === maxStock) {
                     button.disabled = true;
                 }
             }
         }
+
+        const btnHorizon = document.getElementById('btnHorizon');
+        const btnVertical = document.getElementById('btnVertical');
+
+        btnHorizon.onclick = () => {
+            document.body.classList.remove('vertical');
+            btnHorizon.classList.add('active');
+            btnVertical.classList.remove('active');
+        };
+
+        btnVertical.onclick = () => {
+            document.body.classList.add('vertical');
+            btnVertical.classList.add('active');
+            btnHorizon.classList.remove('active');
+        };
     </script>
 
 </body>
